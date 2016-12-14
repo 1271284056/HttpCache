@@ -75,15 +75,15 @@
 				1598195C1E01198100CA852E /* AppDelegate.m */,
 				1598195E1E01198100CA852E /* ViewController.h */,
 				1598195F1E01198100CA852E /* ViewController.m */,
+				1598196F1E011A7900CA852E /* FileSizeCountTool.h */,
+				159819701E011A7900CA852E /* FileSizeCountTool.m */,
+				159819721E011B7E00CA852E /* HttpRequestCache.h */,
+				159819731E011B7E00CA852E /* HttpRequestCache.m */,
 				159819611E01198100CA852E /* Main.storyboard */,
 				159819641E01198100CA852E /* Assets.xcassets */,
 				159819661E01198100CA852E /* LaunchScreen.storyboard */,
 				159819691E01198100CA852E /* Info.plist */,
 				159819581E01198100CA852E /* Supporting Files */,
-				1598196F1E011A7900CA852E /* FileSizeCountTool.h */,
-				159819701E011A7900CA852E /* FileSizeCountTool.m */,
-				159819721E011B7E00CA852E /* HttpRequestCache.h */,
-				159819731E011B7E00CA852E /* HttpRequestCache.m */,
 			);
 			path = HttpCache;
 			sourceTree = "<group>";

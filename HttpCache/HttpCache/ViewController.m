@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "HttpRequestCache.h"
 #import "FileSizeCountTool.h"
-
+//容量单位转换器
 static NSString *DiskSpaceFreeString(int64_t size) {
     if(size < 1024) { //B
         return [NSString stringWithFormat:@"%lldB",size];
