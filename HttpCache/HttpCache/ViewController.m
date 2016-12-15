@@ -39,8 +39,10 @@ static NSString *DiskSpaceFreeString(int64_t size) {
     
 //    [self deleteCache];
     
-    [HttpRequestCache getRequestCacheUrlStr:@"http://carprice.58.com/comm/brand.json" withDic:nil success:^(NSDictionary *requestDic, NSString *msg) {
-//        NSLog(@"----->%@",requestDic);
+    
+    //isCache== yes时候请求成功一次就一直存着 ,no时候每次都请求最新的并刷新缓存数据,没网时候再用缓存数据
+    [HttpRequestCache getRequestCacheUrlStr:@"http://carprice.58.com/comm/brand.json" withDic:nil isCache:YES success:^(NSDictionary *requestDic, NSString *msg) {
+//        NSLog(@"----->hahahha %@",requestDic);
 
     } failure:^(NSString *errorInfo) {
         

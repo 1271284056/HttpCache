@@ -19,6 +19,6 @@ typedef void (^loadProgress)(float progress);
 
 #define kCachePath @"network/HttpCache1"
 
-+ (void)getRequestCacheUrlStr:(NSString *)urlStr withDic:(NSDictionary *)parameters success:(SuccessBlock)success failure:(FailureBlock)failuer ;
++ (void)getRequestCacheUrlStr:(NSString *)urlStr withDic:(NSDictionary *)parameters isCache:(BOOL)isCache success:(SuccessBlock)success failure:(FailureBlock)failuer;
 
 @end

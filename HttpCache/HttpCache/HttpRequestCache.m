@@ -17,8 +17,9 @@ typedef NS_ENUM(NSInteger, RequestType) {
 
 @implementation HttpRequestCache
 
-+ (void)getRequestCacheUrlStr:(NSString *)urlStr withDic:(NSDictionary *)parameters success:(SuccessBlock)success failure:(FailureBlock)failuer{
-    [[self alloc] requestWithUrl:urlStr withDic:nil requestType:RequestTypeGet isCache:YES cacheKey:urlStr imageKey:nil withData:nil upLoadProgress:nil success:^(NSDictionary *requestDic, NSString *msg) {
++ (void)getRequestCacheUrlStr:(NSString *)urlStr withDic:(NSDictionary *)parameters isCache:(BOOL)isCache success:(SuccessBlock)success failure:(FailureBlock)failuer{
+    
+    [[self alloc] requestWithUrl:urlStr withDic:nil requestType:RequestTypeGet isCache:isCache cacheKey:urlStr imageKey:nil withData:nil upLoadProgress:nil success:^(NSDictionary *requestDic, NSString *msg) {
         success(requestDic,msg);
     } failure:^(NSString *errorInfo) {
         
@@ -36,17 +37,17 @@ typedef NS_ENUM(NSInteger, RequestType) {
     //拼接
     NSString * cacheUrl = [self urlDictToStringWithUrlStr:url WithDict:parameters];
     
-    NSLog(@"\n\n 网址 \n\n      %@    \n\n 网址 \n\n",cacheUrl);
+//    NSLog(@"\n\n 网址 \n\n      %@    \n\n 网址 \n\n",cacheUrl);
+    
     //设置YYCache属性
     YYCache *cache = [[YYCache alloc] initWithName:kCachePath];
     
     cache.memoryCache.shouldRemoveAllObjectsOnMemoryWarning = YES;
     cache.memoryCache.shouldRemoveAllObjectsWhenEnteringBackground = YES;
     
-    
     id cacheData;
     
-    if (isCache) {
+    if (isCache) {//isCache== yes时候请求成功一次就一直存着 ,no时候每次都请求最新的并刷新缓存数据,没网时候再用缓存数据
         
         //根据网址从Cache中取数据
         cacheData = [cache objectForKey:cacheKey];
@@ -59,17 +60,36 @@ typedef NS_ENUM(NSInteger, RequestType) {
             } failure:^(NSString *errorInfo) {
                 failure(errorInfo);
             }];
-            
             return ;
-            
         }
     }
+    
     
     //进行网络检查
     
     if (![self requestBeforeJudgeConnect]) {
         failure(@"没有网络");
         NSLog(@"\n\n----%@------\n\n",@"没有网络");
+        
+        
+        if(!isCache){
+            cacheData = [cache objectForKey:cacheKey];
+            
+            if (cacheData != 0) {
+                //将数据统一处理
+                [self returnDataWithRequestData:cacheData Success:^(NSDictionary *requestDic, NSString *msg) {
+                    NSLog(@"缓存数据\n\n    %@    \n\n",requestDic);
+                    success(requestDic,msg);
+                } failure:^(NSString *errorInfo) {
+                    failure(errorInfo);
+                }];
+                
+                
+            }
+        }
+        
+        
+        
         return;
     }
     
@@ -87,27 +107,8 @@ typedef NS_ENUM(NSInteger, RequestType) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            
             [self dealWithResponseObject:responseObject cacheUrl:cacheUrl cacheData:cacheData isCache:isCache cache:cache cacheKey:cacheKey success:^(NSDictionary *requestDic, NSString *msg) {
-                
-            } failure:^(NSString *errorInfo) {
-                
-            }];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            failure(@"出现问题了");
-        }];
-        
-    }
-    
-    //post请求
-    if (requestType == RequestTypePost) {
-        
-        [session POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            
-            [self dealWithResponseObject:responseObject cacheUrl:cacheUrl cacheData:cacheData isCache:isCache cache:cache cacheKey:cacheKey success:^(NSDictionary *requestDic, NSString *msg) {
-                
+                success(requestDic,msg);
             } failure:^(NSString *errorInfo) {
                 
             }];
@@ -115,7 +116,6 @@ typedef NS_ENUM(NSInteger, RequestType) {
             failure(@"出现问题了");
         }];
     }
-    
 }
 
 
@@ -129,69 +129,19 @@ typedef NS_ENUM(NSInteger, RequestType) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;// 关闭网络指示器
     });
     
-    
     NSString * dataString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     dataString = [self deleteSpecialCodeWithStr:dataString];
     NSData *requestData = [dataString dataUsingEncoding:NSUTF8StringEncoding];
     
-    if (isCache) {
-        //
-        [cache setObject:requestData forKey:cacheKey];
-        NSLog(@"请求成功,并且加入缓存");
-        
-    }
-    //如果不缓存 或者 数据不相同 从网络请求
-    if (!isCache || ![cacheData isEqual:requestData]) {
-        
-        [self returnDataWithRequestData:requestData Success:^(NSDictionary *requestDic, NSString *msg) {
-            NSLog(@"网络数据\n\n   %@   \n\n",requestDic);
-        } failure:^(NSString *errorInfo) {
-            failure(errorInfo);
-        }];
-    }
+    [cache setObject:requestData forKey:cacheKey];
+    NSLog(@"请求成功,并且加入缓存");
     
-    
-}
-
-
-/**
- *  拼接post请求的网址
- *
- *  @param urlStr     基础网址
- *  @param parameters 拼接参数
- *
- *  @return 拼接完成的网址
- */
--(NSString *)urlDictToStringWithUrlStr:(NSString *)urlStr WithDict:(NSDictionary *)parameters
-{
-    if (!parameters) {
-        return urlStr;
-    }
-    
-    
-    NSMutableArray *parts = [NSMutableArray array];
-    //enumerateKeysAndObjectsUsingBlock会遍历dictionary并把里面所有的key和value一组一组的展示给你，每组都会执行这个block 这其实就是传递一个block到另一个方法，在这个例子里它会带着特定参数被反复调用，直到找到一个ENOUGH的key，然后就会通过重新赋值那个BOOL *stop来停止运行，停止遍历同时停止调用block
-    [parameters enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        //接收key
-        NSString *finalKey = [key stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-        //接收值
-        NSString *finalValue = [obj stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-        
-        
-        NSString *part =[NSString stringWithFormat:@"%@=%@",finalKey,finalValue];
-        
-        [parts addObject:part];
-        
+    [self returnDataWithRequestData:requestData Success:^(NSDictionary *requestDic, NSString *msg) {
+        success(requestDic,msg);
+        NSLog(@"网络数据\n\n   %@   \n\n",requestDic);
+    } failure:^(NSString *errorInfo) {
+        failure(errorInfo);
     }];
-    
-    NSString *queryString = [parts componentsJoinedByString:@"&"];
-    
-    queryString = queryString ? [NSString stringWithFormat:@"?%@",queryString] : @"";
-    
-    NSString *pathStr = [NSString stringWithFormat:@"%@?%@",urlStr,queryString];
-    
-    return pathStr;
-    
     
     
 }
@@ -245,6 +195,52 @@ typedef NS_ENUM(NSInteger, RequestType) {
     string = [string stringByReplacingOccurrencesOfString:@")" withString:@""];
     return string;
 }
+
+
+
+/**
+ *  拼接post请求的网址
+ *
+ *  @param urlStr     基础网址
+ *  @param parameters 拼接参数
+ *
+ *  @return 拼接完成的网址
+ */
+-(NSString *)urlDictToStringWithUrlStr:(NSString *)urlStr WithDict:(NSDictionary *)parameters
+{
+    if (!parameters) {
+        return urlStr;
+    }
+    
+    
+    NSMutableArray *parts = [NSMutableArray array];
+    //enumerateKeysAndObjectsUsingBlock会遍历dictionary并把里面所有的key和value一组一组的展示给你，每组都会执行这个block 这其实就是传递一个block到另一个方法，在这个例子里它会带着特定参数被反复调用，直到找到一个ENOUGH的key，然后就会通过重新赋值那个BOOL *stop来停止运行，停止遍历同时停止调用block
+    [parameters enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        //接收key
+        NSString *finalKey = [key stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        //接收值
+        NSString *finalValue = [obj stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        
+        
+        NSString *part =[NSString stringWithFormat:@"%@=%@",finalKey,finalValue];
+        
+        [parts addObject:part];
+        
+    }];
+    
+    NSString *queryString = [parts componentsJoinedByString:@"&"];
+    
+    queryString = queryString ? [NSString stringWithFormat:@"?%@",queryString] : @"";
+    
+    NSString *pathStr = [NSString stringWithFormat:@"%@?%@",urlStr,queryString];
+    
+    return pathStr;
+    
+    
+    
+}
+
+
 
 
 
