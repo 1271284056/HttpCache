@@ -4,7 +4,7 @@
 //
 //  Created by 张江东 on 16/12/14.
 //  Copyright © 2016年 58kuaipai. All rights reserved.
-//
+//  用afn作缓存 afn屏蔽了NSURLProtocol 
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
