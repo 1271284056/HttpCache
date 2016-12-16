@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "HttpRequestCache.h"
 #import "FileSizeCountTool.h"
-#import "WebViewController.h"
 #import <YYCache/YYCache.h>
 
 //容量单位转换器

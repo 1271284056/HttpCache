@@ -14,8 +14,6 @@
 		159819681E01198100CA852E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159819661E01198100CA852E /* LaunchScreen.storyboard */; };
 		159819711E011A7900CA852E /* FileSizeCountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 159819701E011A7900CA852E /* FileSizeCountTool.m */; };
 		159819741E011B7E00CA852E /* HttpRequestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 159819731E011B7E00CA852E /* HttpRequestCache.m */; };
-		15D2C0211E03C035002AB165 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2C01F1E03C035002AB165 /* WebViewController.m */; };
-		15D2C0221E03C035002AB165 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D2C0201E03C035002AB165 /* WebViewController.xib */; };
 		D054B75F52799B94C1311AE0 /* Pods_HttpCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D80E7323788416BA3C9ED306 /* Pods_HttpCache.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,9 +31,6 @@
 		159819701E011A7900CA852E /* FileSizeCountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSizeCountTool.m; sourceTree = "<group>"; };
 		159819721E011B7E00CA852E /* HttpRequestCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequestCache.h; sourceTree = "<group>"; };
 		159819731E011B7E00CA852E /* HttpRequestCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequestCache.m; sourceTree = "<group>"; };
-		15D2C01E1E03C035002AB165 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
-		15D2C01F1E03C035002AB165 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		15D2C0201E03C035002AB165 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		25F6B4B531EF5B5149683EE0 /* Pods-HttpCache.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HttpCache.release.xcconfig"; path = "Pods/Target Support Files/Pods-HttpCache/Pods-HttpCache.release.xcconfig"; sourceTree = "<group>"; };
 		312B292DAC5B83D235767C43 /* Pods-HttpCache.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HttpCache.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HttpCache/Pods-HttpCache.debug.xcconfig"; sourceTree = "<group>"; };
 		D80E7323788416BA3C9ED306 /* Pods_HttpCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HttpCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,9 +85,6 @@
 		159819581E01198100CA852E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				15D2C01E1E03C035002AB165 /* WebViewController.h */,
-				15D2C01F1E03C035002AB165 /* WebViewController.m */,
-				15D2C0201E03C035002AB165 /* WebViewController.xib */,
 				159819641E01198100CA852E /* Assets.xcassets */,
 				159819661E01198100CA852E /* LaunchScreen.storyboard */,
 				159819691E01198100CA852E /* Info.plist */,
@@ -181,7 +173,6 @@
 			files = (
 				159819681E01198100CA852E /* LaunchScreen.storyboard in Resources */,
 				159819651E01198100CA852E /* Assets.xcassets in Resources */,
-				15D2C0221E03C035002AB165 /* WebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +233,6 @@
 			files = (
 				159819711E011A7900CA852E /* FileSizeCountTool.m in Sources */,
 				159819601E01198100CA852E /* ViewController.m in Sources */,
-				15D2C0211E03C035002AB165 /* WebViewController.m in Sources */,
 				159819741E011B7E00CA852E /* HttpRequestCache.m in Sources */,
 				1598195D1E01198100CA852E /* AppDelegate.m in Sources */,
 				1598195A1E01198100CA852E /* main.m in Sources */,
