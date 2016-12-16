@@ -10,13 +10,10 @@
 		1598195A1E01198100CA852E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 159819591E01198100CA852E /* main.m */; };
 		1598195D1E01198100CA852E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1598195C1E01198100CA852E /* AppDelegate.m */; };
 		159819601E01198100CA852E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1598195F1E01198100CA852E /* ViewController.m */; };
-		159819631E01198100CA852E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159819611E01198100CA852E /* Main.storyboard */; };
 		159819651E01198100CA852E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 159819641E01198100CA852E /* Assets.xcassets */; };
 		159819681E01198100CA852E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159819661E01198100CA852E /* LaunchScreen.storyboard */; };
 		159819711E011A7900CA852E /* FileSizeCountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 159819701E011A7900CA852E /* FileSizeCountTool.m */; };
 		159819741E011B7E00CA852E /* HttpRequestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 159819731E011B7E00CA852E /* HttpRequestCache.m */; };
-		15D2C01A1E03BE98002AB165 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2C0191E03BE98002AB165 /* NetworkTool.m */; };
-		15D2C01D1E03BEBC002AB165 /* AllCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2C01C1E03BEBC002AB165 /* AllCacheTool.m */; };
 		15D2C0211E03C035002AB165 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2C01F1E03C035002AB165 /* WebViewController.m */; };
 		15D2C0221E03C035002AB165 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D2C0201E03C035002AB165 /* WebViewController.xib */; };
 		D054B75F52799B94C1311AE0 /* Pods_HttpCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D80E7323788416BA3C9ED306 /* Pods_HttpCache.framework */; };
@@ -29,7 +26,6 @@
 		1598195C1E01198100CA852E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1598195E1E01198100CA852E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1598195F1E01198100CA852E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		159819621E01198100CA852E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		159819641E01198100CA852E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		159819671E01198100CA852E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		159819691E01198100CA852E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,10 +33,6 @@
 		159819701E011A7900CA852E /* FileSizeCountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSizeCountTool.m; sourceTree = "<group>"; };
 		159819721E011B7E00CA852E /* HttpRequestCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequestCache.h; sourceTree = "<group>"; };
 		159819731E011B7E00CA852E /* HttpRequestCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequestCache.m; sourceTree = "<group>"; };
-		15D2C0181E03BE98002AB165 /* NetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTool.h; sourceTree = "<group>"; };
-		15D2C0191E03BE98002AB165 /* NetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTool.m; sourceTree = "<group>"; };
-		15D2C01B1E03BEBC002AB165 /* AllCacheTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllCacheTool.h; sourceTree = "<group>"; };
-		15D2C01C1E03BEBC002AB165 /* AllCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCacheTool.m; sourceTree = "<group>"; };
 		15D2C01E1E03C035002AB165 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		15D2C01F1E03C035002AB165 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		15D2C0201E03C035002AB165 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -86,21 +78,10 @@
 				1598195C1E01198100CA852E /* AppDelegate.m */,
 				1598195E1E01198100CA852E /* ViewController.h */,
 				1598195F1E01198100CA852E /* ViewController.m */,
-				15D2C01B1E03BEBC002AB165 /* AllCacheTool.h */,
-				15D2C01C1E03BEBC002AB165 /* AllCacheTool.m */,
 				159819721E011B7E00CA852E /* HttpRequestCache.h */,
 				159819731E011B7E00CA852E /* HttpRequestCache.m */,
-				15D2C0181E03BE98002AB165 /* NetworkTool.h */,
-				15D2C0191E03BE98002AB165 /* NetworkTool.m */,
 				1598196F1E011A7900CA852E /* FileSizeCountTool.h */,
 				159819701E011A7900CA852E /* FileSizeCountTool.m */,
-				159819611E01198100CA852E /* Main.storyboard */,
-				15D2C01E1E03C035002AB165 /* WebViewController.h */,
-				15D2C01F1E03C035002AB165 /* WebViewController.m */,
-				15D2C0201E03C035002AB165 /* WebViewController.xib */,
-				159819641E01198100CA852E /* Assets.xcassets */,
-				159819661E01198100CA852E /* LaunchScreen.storyboard */,
-				159819691E01198100CA852E /* Info.plist */,
 				159819581E01198100CA852E /* Supporting Files */,
 			);
 			path = HttpCache;
@@ -109,6 +90,12 @@
 		159819581E01198100CA852E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				15D2C01E1E03C035002AB165 /* WebViewController.h */,
+				15D2C01F1E03C035002AB165 /* WebViewController.m */,
+				15D2C0201E03C035002AB165 /* WebViewController.xib */,
+				159819641E01198100CA852E /* Assets.xcassets */,
+				159819661E01198100CA852E /* LaunchScreen.storyboard */,
+				159819691E01198100CA852E /* Info.plist */,
 				159819591E01198100CA852E /* main.m */,
 			);
 			name = "Supporting Files";
@@ -194,7 +181,6 @@
 			files = (
 				159819681E01198100CA852E /* LaunchScreen.storyboard in Resources */,
 				159819651E01198100CA852E /* Assets.xcassets in Resources */,
-				159819631E01198100CA852E /* Main.storyboard in Resources */,
 				15D2C0221E03C035002AB165 /* WebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,26 +242,16 @@
 			files = (
 				159819711E011A7900CA852E /* FileSizeCountTool.m in Sources */,
 				159819601E01198100CA852E /* ViewController.m in Sources */,
-				15D2C01A1E03BE98002AB165 /* NetworkTool.m in Sources */,
 				15D2C0211E03C035002AB165 /* WebViewController.m in Sources */,
 				159819741E011B7E00CA852E /* HttpRequestCache.m in Sources */,
 				1598195D1E01198100CA852E /* AppDelegate.m in Sources */,
 				1598195A1E01198100CA852E /* main.m in Sources */,
-				15D2C01D1E03BEBC002AB165 /* AllCacheTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		159819611E01198100CA852E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				159819621E01198100CA852E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		159819661E01198100CA852E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

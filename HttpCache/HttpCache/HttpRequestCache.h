@@ -7,8 +7,6 @@
 //  用afn作缓存 afn屏蔽了NSURLProtocol 
 
 #import <Foundation/Foundation.h>
-#import <AFNetworking/AFNetworking.h>
-#import <YYCache/YYCache.h>
 
 typedef void (^SuccessBlock)(NSDictionary * requestDic, NSString * msg);
 typedef void (^FailureBlock)(NSString *errorInfo);

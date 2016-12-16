@@ -7,6 +7,8 @@
 //
 
 #import "HttpRequestCache.h"
+#import <YYCache/YYCache.h>
+#import <AFNetworking/AFNetworking.h>
 
 typedef NS_ENUM(NSInteger, RequestType) {
     RequestTypeGet,
